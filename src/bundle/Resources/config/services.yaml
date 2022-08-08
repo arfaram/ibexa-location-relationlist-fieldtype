@@ -1,0 +1,13 @@
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    Ibexa\LocationFieldType\FieldType\Location\Type:
+        autoconfigure: false
+        autowire: true
+        public: true
+        parent: Ibexa\Core\FieldType\FieldType
+        tags:
+            - { name: 'ibexa.field_type', alias: 'location' }

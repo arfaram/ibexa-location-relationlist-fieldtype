@@ -22,6 +22,13 @@ composer require arfaram/ibexa-location-fieldtype
     Ibexa\LocationFieldTypeBundle\IbexaLocationFieldTypeBundle::class => ['all' => true],
 ```
 
+### Translation
+
+#### fieldtype name
+If the new fieldtype is shown as `location.name` then run
+```
+php bin/console translation:extract en --config=ibexa_location_fieldtype
+```
 
 ## Screenshots
 
