@@ -1,0 +1,34 @@
+{
+    "name": "arfaram/ibexa-location-fieldtype",
+    "type": "Ibexa-bundle",
+    "description": "Add location fieldtype to Ibexa 4.x",
+    "keywords": [
+        "ezplatform",
+        "ibexa"
+    ],
+    "homepage": "https://github.com/arfaram/ibexa-location-fieldtype",
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Ramzi Arfaoui",
+            "email": "ramzi_arfa@hotmail.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Ibexa\\LocationFieldTypeBundle\\": "src/bundle/",
+            "Ibexa\\LocationFieldType\\": "src/lib/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ibexa\\LocationFieldType\\Tests\\": "src/lib/Tests",
+            "Ibexa\\LocationFieldTypeBundle\\Tests\\": "src/bundle/Tests"
+        }
+    },
+    "require": {
+        "php": "^7.4",
+        "ibexa/core": "^4.0",
+        "ibexa/admin-ui": "^4.0"
+    }
+}
