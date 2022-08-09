@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="fde392a84bc4f5ab5afef425e9e3bb353313e9d6" resname="field_definition.ezobjectrelation.selection_root_reset_title">
+        <source>Reset starting location</source>
+        <target state="new">Reset starting location</target>
+        <note>key: field_definition.ezobjectrelation.selection_root_reset_title</note>
+      </trans-unit>
+      <trans-unit id="f998d524238e980a7ee226a29b76fad0f88933a2" resname="field_definition.locationrelationlist.selection_content_types">
+        <source>Allowed Content Types</source>
+        <target state="new">Allowed Content Types</target>
+        <note>key: field_definition.locationrelationlist.selection_content_types</note>
+      </trans-unit>
+      <trans-unit id="be7a6825efaeb145b40b0bbd049b9a883e74d924" resname="field_definition.locationrelationlist.selection_default_location">
+        <source>Default Location</source>
+        <target state="new">Default Location</target>
+        <note>key: field_definition.locationrelationlist.selection_default_location</note>
+      </trans-unit>
+      <trans-unit id="51512931ebb17cc175cf6df86e563c1fd5e9970b" resname="field_definition.locationrelationlist.selection_limit">
+        <source>Selection limit</source>
+        <target state="new">Selection limit</target>
+        <note>key: field_definition.locationrelationlist.selection_limit</note>
+      </trans-unit>
+      <trans-unit id="c0e1bade2dc029ed0c205654c4f4de8e86004182" resname="field_definition.locationrelationlist.selection_root_udw_button">
+        <source>Select Location</source>
+        <target state="new">Select Location</target>
+        <note>key: field_definition.locationrelationlist.selection_root_udw_button</note>
+      </trans-unit>
+      <trans-unit id="33a375200426c3f8c11150ff4934c2ab5648a90e" resname="field_definition.locationrelationlist.selection_root_udw_title">
+        <source>Select where to start browsing for Relations</source>
+        <target state="new">Select where to start browsing for Relations</target>
+        <note>key: field_definition.locationrelationlist.selection_root_udw_title</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

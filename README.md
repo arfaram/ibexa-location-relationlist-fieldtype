@@ -1,4 +1,4 @@
-# Ibexa location fieldtype Bundle
+# Ibexa location relation list fieldtype Bundle
 
 
 ## Requirement
@@ -13,13 +13,13 @@ Ibexa **4.x +**
 ## Installation
 
 ```bash
-composer require arfaram/ibexa-location-fieldtype
+composer require arfaram/ibexa-location-relation-list-fieldtype
 ```
 
 - Activate the Bundle in `bundles.php`
 
 ```php
-    Ibexa\LocationFieldTypeBundle\IbexaLocationFieldTypeBundle::class => ['all' => true],
+    Ibexa\LocationRelationListFieldTypeBundle\IbexaLocationRelationListFieldTypeBundle::class => ['all' => true],
 ```
 
 ### Translation
@@ -27,7 +27,7 @@ composer require arfaram/ibexa-location-fieldtype
 #### fieldtype name
 If the new fieldtype is shown as `location.name` then run
 ```
-php bin/console translation:extract en --config=ibexa_location_fieldtype
+php bin/console translation:extract en --config=ibexa_location_relation_list_fieldtype
 ```
 
 ## Screenshots

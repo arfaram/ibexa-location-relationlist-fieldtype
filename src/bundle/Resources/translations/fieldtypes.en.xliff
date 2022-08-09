@@ -6,10 +6,10 @@
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
-      <trans-unit id="9426d5c127da953cae21897f13f67e5acc80479b" resname="location.name">
-        <source>Location Relation</source>
-        <target state="new">Location Relation</target>
-        <note>key: location.name</note>
+      <trans-unit id="0265a0828a8da489ed8da11f414e53792dfe9f7d" resname="locationrelationlist.name">
+        <source>Location RelationList</source>
+        <target state="new">Location RelationList</target>
+        <note>key: locationrelationlist.name</note>
       </trans-unit>
     </body>
   </file>

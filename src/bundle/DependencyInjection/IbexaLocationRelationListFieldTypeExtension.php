@@ -1,14 +1,16 @@
 <?php
 
-namespace Ibexa\LocationFieldTypeBundle\DependencyInjection;
+namespace Ibexa\LocationRelationListFieldTypeBundle\DependencyInjection;
 
+use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\Yaml\Yaml;
 
-class IbexaLocationFieldTypeExtension extends Extension implements PrependExtensionInterface
+class IbexaLocationRelationListFieldTypeExtension extends Extension implements PrependExtensionInterface
 {
     /**
      * {@inheritdoc}
@@ -31,6 +33,7 @@ class IbexaLocationFieldTypeExtension extends Extension implements PrependExtens
     public function prepend(ContainerBuilder $container)
     {
         $this->prependJMSTranslation($container);
+        $this->prependViews($container);
     }
 
     /**
@@ -40,7 +43,7 @@ class IbexaLocationFieldTypeExtension extends Extension implements PrependExtens
     {
         $container->prependExtensionConfig('jms_translation', [
             'configs' => [
-                'ibexa_location_fieldtype' => [
+                'ibexa_location_relation_list_fieldtype' => [
                     'dirs' => [
                         __DIR__ . '/../../',
                     ],
@@ -51,5 +54,13 @@ class IbexaLocationFieldTypeExtension extends Extension implements PrependExtens
                 ],
             ],
         ]);
+    }
+
+    private function prependViews(ContainerBuilder $container): void
+    {
+        $configFile = __DIR__ . '/../Resources/config/views.yaml';
+        $config = Yaml::parse(file_get_contents($configFile));
+        $container->prependExtensionConfig('ibexa', $config);
+        $container->addResource(new FileResource($configFile));
     }
 }

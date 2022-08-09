@@ -1,12 +1,12 @@
 {
-    "name": "arfaram/ibexa-location-fieldtype",
+    "name": "arfaram/ibexa-location-relation-list-fieldtype",
     "type": "Ibexa-bundle",
     "description": "Add location fieldtype to Ibexa 4.x",
     "keywords": [
         "ezplatform",
         "ibexa"
     ],
-    "homepage": "https://github.com/arfaram/ibexa-location-fieldtype",
+    "homepage": "https://github.com/arfaram/ibexa-location-relation-list-fieldtype",
     "license": "GPL-2.0-only",
     "authors": [
         {
@@ -16,14 +16,14 @@
     ],
     "autoload": {
         "psr-4": {
-            "Ibexa\\LocationFieldTypeBundle\\": "src/bundle/",
-            "Ibexa\\LocationFieldType\\": "src/lib/"
+            "Ibexa\\LocationRelationListFieldTypeBundle\\": "src/bundle/",
+            "Ibexa\\LocationRelationListFieldType\\": "src/lib/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Ibexa\\LocationFieldType\\Tests\\": "src/lib/Tests",
-            "Ibexa\\LocationFieldTypeBundle\\Tests\\": "src/bundle/Tests"
+            "Ibexa\\LocationRelationListFieldType\\Tests\\": "src/lib/Tests",
+            "Ibexa\\LocationRelationListFieldTypeBundle\\Tests\\": "src/bundle/Tests"
         }
     },
     "require": {

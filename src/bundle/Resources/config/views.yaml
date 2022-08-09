@@ -1,0 +1,4 @@
+system:
+    admin_group:
+        fielddefinition_edit_templates:
+            - { template: '@ibexadesign/location_relation_list/content_type/field_types.html.twig', priority: 10 }

@@ -1,13 +1,17 @@
 services:
     _defaults:
-        autoconfigure: true
         autowire: true
+        autoconfigure: false
         public: false
 
-    Ibexa\LocationFieldType\FieldType\Location\Type:
-        autoconfigure: false
-        autowire: true
-        public: true
-        parent: Ibexa\Core\FieldType\FieldType
+    Ibexa\LocationRelationListFieldType\FieldType\LocationRelationList\Type:
         tags:
-            - { name: 'ibexa.field_type', alias: 'location' }
+            - { name: 'ibexa.field_type', alias: 'locationrelationlist' }
+
+    Ibexa\LocationRelationListFieldType\FieldType\LocationRelationList\Converter\LocationRelationListConverter:
+        tags:
+            - { name: 'ibexa.field_type.storage.legacy.converter', alias: 'locationrelationlist' }
+
+    Ibexa\LocationRelationListFieldType\FieldType\LocationRelationList\Mapper\LocationRelationListFormMapper:
+        tags:
+            - { name: 'ibexa.admin_ui.field_type.form.mapper.definition', fieldType: 'locationrelationlist' }
