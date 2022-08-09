@@ -6,9 +6,12 @@ namespace Ibexa\LocationRelationListFieldType\FieldType\LocationRelationList;
 
 use Ibexa\Contracts\Core\FieldType\Value as SPIValue;
 use Ibexa\Contracts\Core\Persistence\Content\FieldValue as PersistenceValue;
+use Ibexa\Contracts\Core\Repository\Values\Content\ContentInfo;
 use Ibexa\Contracts\Core\Repository\Values\ContentType\FieldDefinition;
+use Ibexa\Core\Base\Exceptions\InvalidArgumentType;
 use Ibexa\Core\FieldType\FieldType;
 use Ibexa\Core\FieldType\ValidationError;
+use Ibexa\Core\FieldType\Value as BaseValue;
 use JMS\TranslationBundle\Model\Message;
 use JMS\TranslationBundle\Translation\TranslationContainerInterface;
 
@@ -48,27 +51,12 @@ final class Type extends FieldType implements TranslationContainerInterface
         return self::$fieldTypeIdentifier;
     }
 
-    public function toPersistenceValue(?SPIValue $value)
+    /** @return array  */
+    public static function getTranslationMessages()
     {
-        if ($value === null) {
-            return new PersistenceValue(
-                [
-                    'data' => [],
-                    'externalData' => null,
-                    'sortKey' => null,
-                ]
-            );
-        }
-
-        return new PersistenceValue(
-            [
-                'data' => [
-                    'locationId' => $value->locationId,
-                ],
-                'externalData' => null,
-                'sortKey' => $this->getSortInfo($value->locationId),
-            ]
-        );
+        return [
+            (new Message(self::$fieldTypeIdentifier.'.name', 'fieldtypes'))->setDesc('Location RelationList')
+        ];
     }
 
     public function validateFieldSettings($fieldSettings)
@@ -210,9 +198,44 @@ final class Type extends FieldType implements TranslationContainerInterface
         return $validationErrors;
     }
 
+//    public function toPersistenceValue(?SPIValue $value)
+//    {
+//        if ($value === null) {
+//            return new PersistenceValue(
+//                [
+//                    'data' => [],
+//                    'externalData' => null,
+//                    'sortKey' => null,
+//                ]
+//            );
+//        }
+//
+//        return new PersistenceValue(
+//            [
+//                'data' => [
+//                    'locationIds' => $value->locationIds,
+//                ],
+//                'externalData' => null,
+//                'sortKey' => $this->getSortInfo($value->locationIds),
+//            ]
+//        );
+//    }
+
+    //@todo
     protected function createValueFromInput($inputValue)
     {
-        // TODO: Implement createValueFromInput() method.
+        // ContentInfo
+        if ($inputValue instanceof ContentInfo) {
+            $inputValue = new Value([$inputValue->id]);
+        } elseif (is_int($inputValue) || is_string($inputValue)) {
+            // content id
+            $inputValue = new Value([$inputValue]);
+        } elseif (is_array($inputValue)) {
+            // content id's
+            $inputValue = new Value($inputValue);
+        }
+
+        return $inputValue;
     }
 
     public function getName(SPIValue $value, FieldDefinition $fieldDefinition, string $languageCode): string
@@ -220,37 +243,47 @@ final class Type extends FieldType implements TranslationContainerInterface
         // TODO: Implement getName() method.
     }
 
+    protected function checkValueStructure(BaseValue $value)
+    {
+        if (!is_array($value->locationIds)) {
+            throw new InvalidArgumentType(
+                '$value->locationIds',
+                'array',
+                $value->locationIds
+            );
+        }
+
+        foreach ($value->locationIds as $key => $locationId) {
+            if (!is_int($locationId) && !is_string($locationId)) {
+                throw new InvalidArgumentType(
+                    "\$value->locationIds[$key]",
+                    'string|int',
+                    $locationId
+                );
+            }
+        }
+    }
     public function getEmptyValue()
     {
-        // TODO: Implement getEmptyValue() method.
+        return new Value();
     }
 
     public function fromHash($hash)
     {
-        // TODO: Implement fromHash() method.
-    }
-
-    protected function checkValueStructure(SPIValue $value)
-    {
-        // TODO: Implement checkValueStructure() method.
+        return new Value($hash['locationIds']);
     }
 
     public function toHash(SPIValue $value)
     {
-        // TODO: Implement toHash() method.
+        return ['locationIds' => $value->locationIds];
     }
 
-    /** @return array  */
-    public static function getTranslationMessages()
+    protected function getSortInfo(BaseValue $value)
     {
-        return [
-            (new Message(self::$fieldTypeIdentifier.'.name', 'fieldtypes'))->setDesc('Location RelationList')
-        ];
+        return implode(',', $value->locationIds);
     }
 
     /**
-     * Returns whether the field type is searchable.
-     *
      * @return bool
      */
     public function isSearchable()

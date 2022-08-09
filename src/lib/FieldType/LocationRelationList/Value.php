@@ -4,24 +4,14 @@ declare(strict_types=1);
 
 namespace Ibexa\LocationRelationListFieldType\FieldType\LocationRelationList;
 
-use Ibexa\Contracts\Core\FieldType\Value as ValueInterface;
+use Ibexa\Core\FieldType\Value as BaseValue;
 
-final class Value implements ValueInterface
+final class Value extends BaseValue
 {
     /** @var array|null */
-    private $locationIds;
+    public $locationIds;
 
     public function __construct(?array $locationIds = [])
-    {
-        $this->locationIds = $locationIds;
-    }
-
-    public function getLocationIds(): ?array
-    {
-        return $this->locationIds;
-    }
-
-    public function setLocationId(array $locationIds = []): void
     {
         $this->locationIds = $locationIds;
     }

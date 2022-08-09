@@ -21,8 +21,8 @@ class LocationRelationListConverter implements Converter
      */
     public function toStorageValue(FieldValue $value, StorageFieldValue $storageFieldValue)
     {
-        $storageFieldValue->dataText = $value->data;
-        $storageFieldValue->sortKeyString = $value->sortKey;
+//        $storageFieldValue->dataText = $value->data;
+//        $storageFieldValue->sortKeyString = $value->sortKey;
     }
 
     /**
@@ -33,7 +33,25 @@ class LocationRelationListConverter implements Converter
      */
     public function toFieldValue(StorageFieldValue $value, FieldValue $fieldValue)
     {
-        $fieldValue->data = $value->dataText;
+        $fieldValue->data = ['locationIds' => []];
+        if ($value->dataText === null) {
+            return;
+        }
+
+        $priorityByContentId = [];
+
+        $dom = new \DOMDocument('1.0', 'utf-8');
+        if ($dom->loadXML($value->dataText) === true) {
+            foreach ($dom->getElementsByTagName('relation-item') as $relationItem) {
+                /* @var \DOMElement $relationItem */
+                $priorityByContentId[$relationItem->getAttribute('location-id')] =
+                    $relationItem->getAttribute('priority');
+            }
+        }
+
+        asort($priorityByContentId, SORT_NUMERIC);
+
+        $fieldValue->data['locationIds'] = array_keys($priorityByContentId);
         $fieldValue->sortKey = $value->sortKeyString;
     }
 
@@ -112,7 +130,7 @@ class LocationRelationListConverter implements Converter
 
         // default value
         $fieldDef->defaultValue = new FieldValue();
-        $fieldDef->defaultValue->data = ['destinationContentIds' => []];
+        $fieldDef->defaultValue->data = ['locationIds' => []];
 
         if ($storageDef->dataText5 === null) {
             return;
