@@ -198,44 +198,42 @@ final class Type extends FieldType implements TranslationContainerInterface
         return $validationErrors;
     }
 
-//    public function toPersistenceValue(?SPIValue $value)
-//    {
-//        if ($value === null) {
-//            return new PersistenceValue(
-//                [
-//                    'data' => [],
-//                    'externalData' => null,
-//                    'sortKey' => null,
-//                ]
-//            );
-//        }
-//
-//        return new PersistenceValue(
-//            [
-//                'data' => [
-//                    'locationIds' => $value->locationIds,
-//                ],
-//                'externalData' => null,
-//                'sortKey' => $this->getSortInfo($value->locationIds),
-//            ]
-//        );
-//    }
-
-    //@todo
     protected function createValueFromInput($inputValue)
     {
-        // ContentInfo
+        //@todo ? ContentInfo
         if ($inputValue instanceof ContentInfo) {
             $inputValue = new Value([$inputValue->id]);
         } elseif (is_int($inputValue) || is_string($inputValue)) {
-            // content id
+            // location id
             $inputValue = new Value([$inputValue]);
         } elseif (is_array($inputValue)) {
-            // content id's
+            // location id's
             $inputValue = new Value($inputValue);
         }
 
         return $inputValue;
+    }
+
+
+    protected function checkValueStructure(BaseValue $value)
+    {
+        if (!is_array($value->destinationLocationIds)) {
+            throw new InvalidArgumentType(
+                '$value->destinationLocationIds',
+                'array',
+                $value->destinationLocationIds
+            );
+        }
+
+        foreach ($value->destinationLocationIds as $key => $locationId) {
+            if (!is_int($locationId) && !is_string($locationId)) {
+                throw new InvalidArgumentType(
+                    "\$value->destinationLocationIds[$key]",
+                    'string|int',
+                    $locationId
+                );
+            }
+        }
     }
 
     public function getName(SPIValue $value, FieldDefinition $fieldDefinition, string $languageCode): string
@@ -243,26 +241,36 @@ final class Type extends FieldType implements TranslationContainerInterface
         // TODO: Implement getName() method.
     }
 
-    protected function checkValueStructure(BaseValue $value)
+    public function validate(FieldDefinition $fieldDefinition, SPIValue $fieldValue)
     {
-        if (!is_array($value->locationIds)) {
-            throw new InvalidArgumentType(
-                '$value->locationIds',
-                'array',
-                $value->locationIds
+        $validationErrors = [];
+
+        if ($this->isEmptyValue($fieldValue)) {
+            return $validationErrors;
+        }
+
+        $validatorConfiguration = $fieldDefinition->getValidatorConfiguration();
+        $constraints = isset($validatorConfiguration['RelationListValueValidator']) ?
+            $validatorConfiguration['RelationListValueValidator'] :
+            [];
+
+        $validationErrors = [];
+
+        if (isset($constraints['selectionLimit']) &&
+            $constraints['selectionLimit'] > 0 && count($fieldValue->destinationLocationIds) > $constraints['selectionLimit']) {
+            $validationErrors[] = new ValidationError(
+                'The selected content items number cannot be higher than %limit%.',
+                null,
+                [
+                    '%limit%' => $constraints['selectionLimit'],
+                ],
+                'destinationContentIds'
             );
         }
 
-        foreach ($value->locationIds as $key => $locationId) {
-            if (!is_int($locationId) && !is_string($locationId)) {
-                throw new InvalidArgumentType(
-                    "\$value->locationIds[$key]",
-                    'string|int',
-                    $locationId
-                );
-            }
-        }
+        return $validationErrors;
     }
+
     public function getEmptyValue()
     {
         return new Value();
@@ -270,17 +278,17 @@ final class Type extends FieldType implements TranslationContainerInterface
 
     public function fromHash($hash)
     {
-        return new Value($hash['locationIds']);
+        return new Value($hash['destinationLocationIds']);
     }
 
     public function toHash(SPIValue $value)
     {
-        return ['locationIds' => $value->locationIds];
+        return ['destinationLocationIds' => $value->destinationLocationIds];
     }
 
     protected function getSortInfo(BaseValue $value)
     {
-        return implode(',', $value->locationIds);
+        return implode(',', $value->destinationLocationIds);
     }
 
     /**

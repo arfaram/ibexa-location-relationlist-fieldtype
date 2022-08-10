@@ -22,7 +22,8 @@ class IbexaLocationRelationListFieldTypeExtension extends Extension implements P
             new FileLocator(__DIR__ . '/../Resources/config')
         );
 
-        $loader->load('services.yaml');
+        $loader->load('controllers.yaml');
+        $loader->load('field_types.yaml');
     }
 
     /**

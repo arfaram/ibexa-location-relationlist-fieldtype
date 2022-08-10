@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="0a238294d9f359d1e2fbdb0977d03924293d5e9a" resname="locationrelationlist.content_type">
+        <source>Content Type</source>
+        <target state="new">Content Type</target>
+        <note>key: locationrelationlist.content_type</note>
+      </trans-unit>
+      <trans-unit id="45eab3d6c5ea87d1c6ad8ce05440a4e24203fa7b" resname="locationrelationlist.created">
+        <source>Created</source>
+        <target state="new">Created</target>
+        <note>key: locationrelationlist.created</note>
+      </trans-unit>
+      <trans-unit id="98a2b44b316ae52e5533fa64c6c9e4ad42027606" resname="locationrelationlist.location_id">
+        <source>location Id</source>
+        <target state="new">location Id</target>
+        <note>key: locationrelationlist.location_id</note>
+      </trans-unit>
+      <trans-unit id="e595361c9edbd816b9f8173b27a4289333420119" resname="locationrelationlist.multiple_relations">
+        <source>Single or Multiple location relations</source>
+        <target state="new">Single or Multiple relation</target>
+        <note>key: locationrelationlist.multiple_relations</note>
+      </trans-unit>
+      <trans-unit id="0265a0828a8da489ed8da11f414e53792dfe9f7d" resname="locationrelationlist.name">
+        <source>Name</source>
+        <target state="new">Name</target>
+        <note>key: locationrelationlist.name</note>
+      </trans-unit>
+      <trans-unit id="034eaa9e2888b1ba15e52d86ffa2200f47fced9c" resname="locationrelationlist.no_location_relation">
+        <source>This Content has not location relation</source>
+        <target state="new">This Content has not location relation</target>
+        <note>key: locationrelationlist.no_location_relation</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

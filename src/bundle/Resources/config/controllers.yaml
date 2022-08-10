@@ -1,0 +1,10 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: false
+        public: false
+
+    Ibexa\LocationRelationListFieldTypeBundle\Controller\LocationRelationListController:
+        parent: Ibexa\Contracts\AdminUi\Controller\Controller
+        tags:
+            - 'controller.service_arguments'

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="674278f110fc8748e8b44f28e0f6273311ff7864" resname="locationrelationlist.cta.select">
+        <source>Select Item</source>
+        <target state="new">Select Item</target>
+        <note>key: locationrelationlist.cta.select</note>
+      </trans-unit>
+      <trans-unit id="9822fc88104c116b1be8e16da9d93af5e0df5dbc" resname="locationrelationlist.delete_selected_relations">
+        <source>Delete</source>
+        <target state="new">Delete</target>
+        <note>key: locationrelationlist.delete_selected_relations</note>
+      </trans-unit>
+      <trans-unit id="85995f301552dd5fa3774c158272132af8707e20" resname="locationrelationlist.helper">
+        <source>Stores Relations to other Location items.</source>
+        <target state="new">Stores Relations to other Location items.</target>
+        <note>key: locationrelationlist.helper</note>
+      </trans-unit>
+      <trans-unit id="517fb4bad2ed831de7cbb588d48e7ea75a77161f" resname="locationrelationlist.table.row.content_type">
+        <source>Content Type</source>
+        <target state="new">Content Type</target>
+        <note>key: locationrelationlist.table.row.content_type</note>
+      </trans-unit>
+      <trans-unit id="92fa17ca6b1c6ca584a0d5b845648f2ce8e4e447" resname="locationrelationlist.table.row.created">
+        <source>Created</source>
+        <target state="new">Created</target>
+        <note>key: locationrelationlist.table.row.created</note>
+      </trans-unit>
+      <trans-unit id="9d993d919ea0e6f56b5690692e01aaba901cbc8d" resname="locationrelationlist.table.row.name">
+        <source>Name</source>
+        <target state="new">Name</target>
+        <note>key: locationrelationlist.table.row.name</note>
+      </trans-unit>
+      <trans-unit id="fcbc7af1bb280feba88d935cc0df26f3a8f66935" resname="locationrelationlist.table.row.order">
+        <source>Order</source>
+        <target state="new">Order</target>
+        <note>key: locationrelationlist.table.row.order</note>
+      </trans-unit>
+      <trans-unit id="52ab432c7abe0e2cce3df1fc379fce7ee7ce1d18" resname="locationrelationlist.title">
+        <source>Location Relations</source>
+        <target state="new">Location Relations</target>
+        <note>key: locationrelationlist.title</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

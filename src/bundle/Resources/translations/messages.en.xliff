@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="fb19ae886e63bac3aa3b851ac00aae8a3b777992" resname="content.in_trash">
+        <source>In Trash</source>
+        <target state="new">In Trash</target>
+        <note>key: content.in_trash</note>
+      </trans-unit>
+      <trans-unit id="5e1dcb88194a53dede3399ef83fe047c5096af1f" resname="locationrelationlist.cta.limit.multi">
+        <source>Set up a Relation with one or several Items</source>
+        <target state="new">Set up a Relation with one or several Items</target>
+        <note>key: locationrelationlist.cta.limit.multi</note>
+      </trans-unit>
+      <trans-unit id="d6c63a005f7ad6d15835e8ca5481ab2d1edcb477" resname="locationrelationlist.cta.limit.single">
+        <source>Set up a Relation with one Item</source>
+        <target state="new">Set up a Relation with one Item</target>
+        <note>key: locationrelationlist.cta.limit.single</note>
+      </trans-unit>
+      <trans-unit id="b1a79ffb0978776eabf9a6870cca6308df1fd7fb" resname="locationrelationlist.cta.limit.sub_text">
+        <source>Relations max. %limit%</source>
+        <target state="new">Relations max. %limit%</target>
+        <note>key: locationrelationlist.cta.limit.sub_text</note>
+      </trans-unit>
+      <trans-unit id="674278f110fc8748e8b44f28e0f6273311ff7864" resname="locationrelationlist.cta.select">
+        <source>Select Item</source>
+        <target state="new">Select Item</target>
+        <note>key: locationrelationlist.cta.select</note>
+      </trans-unit>
+      <trans-unit id="9822fc88104c116b1be8e16da9d93af5e0df5dbc" resname="locationrelationlist.delete_selected_relations">
+        <source>Delete</source>
+        <target state="new">Delete</target>
+        <note>key: locationrelationlist.delete_selected_relations</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

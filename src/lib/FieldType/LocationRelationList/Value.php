@@ -9,15 +9,15 @@ use Ibexa\Core\FieldType\Value as BaseValue;
 final class Value extends BaseValue
 {
     /** @var array|null */
-    public $locationIds;
+    public $destinationLocationIds;
 
-    public function __construct(?array $locationIds = [])
+    public function __construct(?array $destinationLocationIds = [])
     {
-        $this->locationIds = $locationIds;
+        $this->destinationLocationIds = $destinationLocationIds;
     }
 
     public function __toString()
     {
-        return implode(',', $this->locationIds);
+        return implode(',', $this->destinationLocationIds);
     }
 }

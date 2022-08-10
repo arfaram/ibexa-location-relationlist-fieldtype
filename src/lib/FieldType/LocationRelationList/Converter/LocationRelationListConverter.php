@@ -21,8 +21,34 @@ class LocationRelationListConverter implements Converter
      */
     public function toStorageValue(FieldValue $value, StorageFieldValue $storageFieldValue)
     {
-//        $storageFieldValue->dataText = $value->data;
-//        $storageFieldValue->sortKeyString = $value->sortKey;
+        $doc = new \DOMDocument('1.0', 'utf-8');
+        $root = $doc->createElement('related-locations');
+        $doc->appendChild($root);
+
+        $relationList = $doc->createElement('relation-list');
+
+        $priority = 0;
+
+        foreach ($value->data['destinationLocationIds'] as $id) {
+
+            $row['location_id'] = $id;
+            $row['priority'] = (++$priority);
+
+            $relationItem = $doc->createElement('relation-item');
+
+            $relationItem->setAttribute('priority',(string) $row['priority']);
+            $relationItem->setAttribute('location-id',(string) $row['location_id']);
+
+            $relationList->appendChild($relationItem);
+            unset($relationItem);
+        }
+
+        $root->appendChild($relationList);
+        $doc->appendChild($root);
+
+        $storageFieldValue->dataText = $doc->saveXML();
+        $storageFieldValue->sortKeyString = $value->sortKey;
+
     }
 
     /**
@@ -33,7 +59,7 @@ class LocationRelationListConverter implements Converter
      */
     public function toFieldValue(StorageFieldValue $value, FieldValue $fieldValue)
     {
-        $fieldValue->data = ['locationIds' => []];
+        $fieldValue->data = ['destinationLocationIds' => []];
         if ($value->dataText === null) {
             return;
         }
@@ -51,8 +77,10 @@ class LocationRelationListConverter implements Converter
 
         asort($priorityByContentId, SORT_NUMERIC);
 
-        $fieldValue->data['locationIds'] = array_keys($priorityByContentId);
+        $fieldValue->data['destinationLocationIds'] = array_keys($priorityByContentId);
         $fieldValue->sortKey = $value->sortKeyString;
+
+
     }
 
     /**
@@ -66,7 +94,7 @@ class LocationRelationListConverter implements Converter
         $fieldSettings = $fieldDef->fieldTypeConstraints->fieldSettings;
         $validators = $fieldDef->fieldTypeConstraints->validators;
         $doc = new \DOMDocument('1.0', 'utf-8');
-        $root = $doc->createElement('related-objects');
+        $root = $doc->createElement('related-locations');
         $doc->appendChild($root);
 
         $constraints = $doc->createElement('constraints');
@@ -130,7 +158,7 @@ class LocationRelationListConverter implements Converter
 
         // default value
         $fieldDef->defaultValue = new FieldValue();
-        $fieldDef->defaultValue->data = ['locationIds' => []];
+        $fieldDef->defaultValue->data = ['destinationLocationIds' => []];
 
         if ($storageDef->dataText5 === null) {
             return;

@@ -1,0 +1,31 @@
+parameters:
+    field_type.locationrelationlist.identifier: 'locationrelationlist'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: false
+        public: false
+
+    Ibexa\LocationRelationListFieldType\FieldType\LocationRelationList\Type:
+        tags:
+            - { name: 'ibexa.field_type', alias: '%field_type.locationrelationlist.identifier%' }
+
+    Ibexa\LocationRelationListFieldType\FieldType\LocationRelationList\Converter\LocationRelationListConverter:
+        tags:
+            - { name: 'ibexa.field_type.storage.legacy.converter', alias: '%field_type.locationrelationlist.identifier%' }
+
+    Ibexa\LocationRelationListFieldType\FieldType\LocationRelationList\Mapper\LocationRelationListFormFieldDefinitionMapper:
+        tags:
+            - { name: 'ibexa.admin_ui.field_type.form.mapper.definition', fieldType: '%field_type.locationrelationlist.identifier%' }
+
+    Ibexa\LocationRelationListFieldType\FieldType\LocationRelationList\Mapper\LocationRelationListFormFieldValueMapper:
+        tags:
+            - { name: 'ibexa.admin_ui.field_type.form.mapper.value', fieldType: '%field_type.locationrelationlist.identifier%' }
+
+    Ibexa\LocationRelationListFieldType\Form\LocationRelationList\Type\LocationRelationListType:
+        autoconfigure: true
+
+    Ibexa\LocationRelationListFieldType\FieldType\LocationRelationList\Indexable:
+        tags:
+            - { name: 'ibexa.field_type.indexable', alias: '%field_type.locationrelationlist.identifier%' }

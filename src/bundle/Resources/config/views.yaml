@@ -1,4 +1,12 @@
 system:
-    admin_group:
+    default:
         fielddefinition_edit_templates:
             - { template: '@ibexadesign/location_relation_list/content_type/field_types.html.twig', priority: 10 }
+
+        field_templates:
+            - { template: '@ibexadesign/location_relation_list/content/content_fields.html.twig', priority: 10 }
+
+    admin_group:
+        admin_ui_forms:
+            content_edit_form_templates:
+                - { template: '@ibexadesign/location_relation_list/content/form_fields.html.twig', priority: -10 }

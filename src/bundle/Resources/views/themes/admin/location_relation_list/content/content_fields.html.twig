@@ -1,0 +1,37 @@
+{% extends '@IbexaCore/content_fields.html.twig' %}
+
+{% trans_default_domain 'fieldtypes_preview' %}
+
+{% block locationrelationlist_field %}
+    {% apply spaceless %}
+        {% if not ibexa_field_is_empty( content, field ) %}
+            {% set attr = attr|merge({'class': (attr.class|default('') ~ ' ibexa-field-preview ibexa-field-preview--locationrelationlist')|trim}) %}
+            <div {{ block( 'field_attributes' ) }}>
+
+                {% embed '@ibexadesign/ui/component/table/table.html.twig' with {
+                    headline: 'locationrelationlist.multiple_relations'|trans|desc('Single or Multiple location relation'),
+                    head_cols: [
+                        { content: 'locationrelationlist.name'|trans|desc('Name') },
+                        { content: 'locationrelationlist.content_type'|trans|desc('Content Type') },
+                        { content: 'locationrelationlist.location_id'|trans|desc('location Id') },
+                        { content: 'locationrelationlist.created'|trans|desc('Created') },
+                    ],
+                    show_head_cols_if_empty: true,
+                    empty_table_info_text: 'locationrelationlist.no_location_relation'|trans|desc('This Content has not location relation'),
+                } %}
+                    {% block tbody %}
+                        {% for locationId in field.value.destinationLocationIds %}
+                            {% embed '@ibexadesign/ui/component/table/table_body_row.html.twig' %}
+                                {% block body_row_cells %}
+                                    {{ render(controller('Ibexa\\LocationRelationListFieldTypeBundle\\Controller\\LocationRelationListController::locationRelationViewAction', {
+                                        'locationId': locationId,
+                                    } )) }}
+                                {% endblock %}
+                            {% endembed %}
+                        {% endfor %}
+                    {% endblock %}
+                {% endembed %}
+            </div>
+        {% endif %}
+    {% endapply %}
+{% endblock %}

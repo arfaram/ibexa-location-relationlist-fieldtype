@@ -1,4 +1,4 @@
-{# ezobjectrelationlist is used here for after udw selection with default js file aka: ezobjectrelationlist-settings. No need to rewrite the JS. In next future Ibexa version check if the ezobjectrelationlist still have that name #}
+{# ezobjectrelationlist is used here for after udw selection with default js file aka: ezobjectrelationlist-settings. No need to rewrite the JS. In future Ibexa version check if the ezobjectrelationlist still have that name #}
 {% block locationrelationlist_field_definition_edit %}
     {% set is_translation = is_translation ?? false %}
     <div class="ezobjectrelationlist-settings selection-default-location">
@@ -20,7 +20,7 @@
                 |desc("Select Location") }}</button>
             <button
                     type="button"
-                    title="{{ "field_definition.ezobjectrelation.selection_root_reset_title"
+                    title="{{ "field_definition.locationrelationlist.selection_root_reset_title"
                     |trans({}, "content_type")
                     |desc('Reset starting location') }}"
                     class="ibexa-btn ibexa-btn--reset-starting-location btn"
