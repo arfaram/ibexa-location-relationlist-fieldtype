@@ -1,0 +1,17 @@
+{% extends '@IbexaCore/content_fields.html.twig' %}
+
+{% trans_default_domain "content_fields" %}
+
+{% block locationrelationlist_field %}
+    {% apply spaceless %}
+        {% if not ibexa_field_is_empty( content, field ) %}
+            <ul {{ block( 'field_attributes' ) }}>
+                {% for locationId in field.value.destinationLocationIds %}
+                    <li>
+                        {{ render( controller( "ibexa_content::viewAction", {'locationId': locationId, 'viewType': 'embed', 'layout': false} ) ) }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endapply %}
+{% endblock %}

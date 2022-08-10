@@ -23,7 +23,7 @@
       </trans-unit>
       <trans-unit id="e595361c9edbd816b9f8173b27a4289333420119" resname="locationrelationlist.multiple_relations">
         <source>Single or Multiple location relations</source>
-        <target state="new">Single or Multiple relation</target>
+        <target state="new">Single or Multiple location relation</target>
         <note>key: locationrelationlist.multiple_relations</note>
       </trans-unit>
       <trans-unit id="0265a0828a8da489ed8da11f414e53792dfe9f7d" resname="locationrelationlist.name">
