@@ -1,5 +1,5 @@
 {
-    "name": "arfaram/ibexa-location-relation-list-fieldtype",
+    "name": "arfaram/ibexa-location-relationlist-fieldtype",
     "type": "Ibexa-bundle",
     "description": "Add location fieldtype to Ibexa 4.x",
     "keywords": [
